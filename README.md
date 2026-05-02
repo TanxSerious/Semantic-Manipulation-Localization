@@ -2,14 +2,14 @@
 
 This project provides training and testing scripts for semantic manipulation localization.
 
-## 摘要
+## Abstract
 
 Recent advances in generative editing have made multimedia images increasingly easy to modify at the semantic level. Unlike conventional manipulations that leave detectable low-level artifacts, semantic edits may only alter a small attribute, state, or relationship of an object while preserving strong visual consistency with the surrounding content. Such edits can substantially change image interpretation, posing a new challenge to trustworthy multimedia content understanding. In this paper, we study Semantic Manipulation Localization (SML), which aims to localize fine-grained meaning-altering edits in multimedia images. To support this task, we construct a dedicated benchmark through a semantics-driven manipulation pipeline, where semantically decisive regions are identified, edited, and annotated with pixel-level masks. We further propose TRACE, a semantic-aware localization framework that progressively models semantic sensitivity from three aspects. First, a semantic anchoring module grounds localization in meaning-carrying image regions. Second, a semantic perturbation sensing module injects frequency-domain cues to capture subtle visual changes under strong content consistency. Third, a semantic-constrained reasoning module verifies candidate regions through joint reasoning over manipulated content and valid semantic scope. Extensive experiments demonstrate that TRACE consistently outperforms representative image manipulation localization methods on the proposed benchmark, producing more complete, compact, and semantically coherent localization results. These results suggest that semantic-aware localization is essential for multimedia content integrity analysis in the era of generative editing.
 
-## 链接
+## Datasets and Results
 
-- **原始数据集：** [IEEE Dataport (DOI: 10.21227/7d02-j376)](https://dx.doi.org/10.21227/7d02-j376)
-- **结果：** [Google Drive — final res.zip](https://drive.google.com/file/d/1vhvhJ2TUzmcnVaooMG8pjkkC1kHlujpX/view?usp=sharing)
+- **SML Dataset：** [IEEE Dataport (DOI: 10.21227/7d02-j376)](https://dx.doi.org/10.21227/7d02-j376)
+- **Predicted results by our Trace Model：** [Google Drive — final res.zip](https://drive.google.com/file/d/1vhvhJ2TUzmcnVaooMG8pjkkC1kHlujpX/view?usp=sharing)
 
 ---
 
