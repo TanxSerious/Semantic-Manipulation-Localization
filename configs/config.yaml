@@ -1,0 +1,117 @@
+﻿train_dataset:
+  dataset:
+    name: paired-image-folders
+    args:
+      root_path_1: ./data/train/image
+      root_path_2: ./data/train/mask
+      root_path_edge: ./data/train/edge
+      cache: none
+      split_key: train
+  wrapper:
+    name: train
+    args:
+      inp_size: 1008
+      augment: false
+  batch_size: 1
+
+val_dataset:
+  dataset:
+    name: paired-image-folders
+    args:
+      root_path_1: ./data/valid/image
+      root_path_2: ./data/valid/mask
+      cache: none
+      split_key: test
+  wrapper:
+    name: val
+    args:
+      inp_size: 1008
+  batch_size: 1
+
+test_dataset:
+  dataset:
+    name: paired-image-folders
+    args:
+      root_path_1: ./data/test/image
+      root_path_2: ./data/test/mask
+      cache: none
+      split_key: test
+  wrapper:
+    name: val
+    args:
+      inp_size: 1008
+  batch_size: 1
+
+eval_type: cod
+sam_checkpoint: ./checkpoint/sam3.pt
+data_norm:
+  inp:
+    sub:
+    - 0.5
+    div:
+    - 0.5
+  gt:
+    sub:
+    - 0.5
+    div:
+    - 0.5
+  gt_rgb:
+    sub:
+    - 0.5
+    div:
+    - 0.5
+model:
+  name: sam
+  args:
+    inp_size: 1008
+    loss: iou
+    encoder_mode:
+      name: sam
+      img_size: 1008
+      mlp_ratio: 4
+      patch_size: 16
+      qkv_bias: true
+      use_rel_pos: true
+      window_size: 14
+      out_chans: 256
+      scale_factor: 32
+      freq_nums: 0.25
+      prompt_type: highpass
+      prompt_embed_dim: 256
+      tuning_stage: 1234
+      handcrafted_tune: true
+      embedding_tune: true
+      adaptor: adaptor
+      embed_dim: 1024
+      depth: 24
+      num_heads: 16
+      global_attn_indexes:
+      - 5
+      - 11
+      - 17
+      - 23
+      input_type: wavelet_srm_raw      
+    sam_mask_decoder_extra_args:
+      use_mask_mamba_refine: true 
+      use_edge_path: true 
+      mamba_conv_n_layer: 2 
+      mamba_conv_d_model: 32 
+      mamba_attn_layer_idx:             
+      mamba_attn_cfg:
+        num_heads: 
+optimizer:
+  name: adamw
+  args:
+    lr: 0.0002
+lr_min: 1.0e-7
+epoch_max: 20
+
+multi_step_lr:
+  milestones:
+  - 1
+  gamma: 0.1
+epoch_val: 1
+epoch_save: 1
+
+resume: 0
+#start_epoch: 60
