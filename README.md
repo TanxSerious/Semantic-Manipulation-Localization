@@ -1,4 +1,4 @@
-# Semantic Manipulation Localization
+# Semantic-Aware Manipulation Localization for Trustworthy Multimedia Content Understanding
 
 This project provides training and testing scripts for semantic manipulation localization.
 
